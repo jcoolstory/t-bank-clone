@@ -1,0 +1,39 @@
+.tshistory-container {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 20px;
+    gap:20px;
+    height: 200px;
+    transform: scale(1, -1);
+
+}
+
+.tshistory-header {
+    padding:40px 0;
+}
+
+.tshistory-item {
+
+    border-radius: 5px;
+}
+
+.tshistory-yaxis-container {
+    width: 100%;
+    height: 100%;
+}
+.tshistory-item-title {
+    transform: scale(1, -1);
+    text-align: center;
+    margin-top: 5px;
+}
+
+.tshistory-axis-container {
+    border-top:1px dashed #888;
+    padding-top:10px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 20px;
+    gap:20px;
+}

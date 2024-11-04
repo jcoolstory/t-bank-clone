@@ -1,0 +1,12 @@
+.tsbar-container {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 20px;
+    /* border-radius: 5px; */
+    gap:2px;
+}
+
+.tsbar-item {
+    height: 100%;
+}

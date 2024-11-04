@@ -1,0 +1,93 @@
+.tsasset-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tsasset-item {
+    display: flex;
+    height: 50px;
+    height: 100%;
+}
+
+.tsasset-item-ico-container {
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    /* justify-self: end; */
+    align-items: center;
+    width: 50px;
+}
+
+
+.circle-icon {
+    border-radius: 50%;
+    background-color: gray;
+    width: 45px;
+    height: 45px;
+    color: white;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    /* justify-self: end; */
+    align-items: center;
+}
+
+.tsasset-item-title {
+    width: 100px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.tsasset-item-extend {
+    flex-grow: 1;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    /* justify-self: end; */
+    align-items: end;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    padding: 10px
+}
+
+.diff-plus {
+    color: red;
+}
+
+.diff-minus {
+    color: blue;
+
+}
+
+.t-t1 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.t-t2 {
+    font-size: 16px;
+}
+
+.t-gray {
+    color: #888;
+}
+
+.t-disalbed {
+    color: #888 !important;
+}
