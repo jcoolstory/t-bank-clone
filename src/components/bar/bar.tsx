@@ -6,8 +6,8 @@ import { RatioItems } from '../type';
 const TSBar = memo(({items}: TSBarProps) => {
     
     return <div className='tsbar-container' >
-        {items.map((item)=> (
-           <TSBarItem {...item} /> 
+        {items.map((item, i)=> (
+           <TSBarItem key={i} {...item} /> 
         ))}
     </div>
 })

@@ -23,8 +23,8 @@ export const Asset = memo(({ items }: TSAssetProps) => {
 
   return (
     <div className="tsasset-container" >
-      {items.map((item) => (
-        <AssetItem item={item} />
+      {items.map((item, i) => (
+        <AssetItem key={i} item={item} />
       ))}
     </div>
   );

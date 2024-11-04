@@ -12,12 +12,12 @@ const TSHistory = memo(({ items }: TSHistoryProps) => {
     <Summary asset={values[values.length-1]}/>
       <div className="tshistory-container" >
         {values.map((item, i) => (
-          <TSHistoryBarItem {...item} isLast={i === values.length - 1} />
+          <TSHistoryBarItem key={i} {...item} isLast={i === values.length - 1} />
         ))}
       </div>
       <div className="tshistory-axis-container t-s1">
         {values.map((item, i) => (
-          <TSHistoryAxisItem {...item} isLast={i === values.length - 1} />
+          <TSHistoryAxisItem key={i} {...item} isLast={i === values.length - 1} />
         ))}
       </div>
       <div className="t-s1">만원 단위</div>
