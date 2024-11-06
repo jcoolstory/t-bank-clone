@@ -12,29 +12,35 @@ export const ListView = (props: ListViewProps) => {
   );
 };
 
-const ListItemTail = (props: ListItemProps) => {
+export const ListItemTail = (props: ListItemProps) => {
   function hanldeClick(event: React.MouseEvent<HTMLElement, MouseEvent>): void {
-    if (props.tailAction)
-      mockAction(props.tailAction)
+    if (props.tailAction) mockAction(props.tailAction);
   }
+
   if (props.type === "link")
     return (
       <div className="tslistitem-tail">
         <div className="tslistitem-link t-gray">
-          {props.tail} {">"}{" "}
+          {props.tail} {">"}
         </div>
       </div>
     );
+    if (props.type === "text") return <div className="t-s1 bold t-blues">{props.tail}</div>;
+  if (props.type === "none") {
+    return null;
+  }
   return (
     <div className="tslistitem-tail">
       {props.tail ? (
-        <button className="tslistitem-button" onClick={hanldeClick}>{props.tail}</button>
+        <button className="tslistitem-button" onClick={hanldeClick}>
+          {props.tail}
+        </button>
       ) : null}
     </div>
   );
 };
 
-const ListItemContent = (props: ListItemProps) => {
+const ListItemContent = memo((props: ListItemProps) => {
   if (props.type === "link") {
     return (
       <div className="tslistitem-content tslistitem-link">
@@ -49,31 +55,29 @@ const ListItemContent = (props: ListItemProps) => {
       {props.subtitle && <div className="t-s1 t-gray">{props.subtitle}</div>}
     </div>
   );
-};
+});
 
 export const ListItem = memo((props: ListItemProps) => {
   function hanldeClick(event: React.MouseEvent<HTMLElement, MouseEvent>): void {
     if (props.action) {
-
-      mockAction(props.action)
-    }
-    else {
-      mockAction(props.title.toString())
+      mockAction(props.action);
+    } else {
+      mockAction(props.title.toString());
     }
   }
 
-
   return (
     <div className="tslistitem-container" onClick={hanldeClick}>
-      { props.icon && 
-      <div className="tslistitem-head">
-        <i
-          className="circle-icon"
-          style={{ backgroundColor: "blue", width: "25px", height: "25px" }}
-        >
-          {props.icon}
-        </i>
-      </div> }
+      {props.icon && (
+        <div className="tslistitem-head">
+          <i
+            className="circle-icon"
+            style={{ backgroundColor: "blue", width: "25px", height: "25px" }}
+          >
+            {props.icon}
+          </i>
+        </div>
+      )}
       <ListItemContent {...props} />
       <ListItemTail {...props} />
     </div>

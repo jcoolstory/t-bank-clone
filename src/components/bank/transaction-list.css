@@ -1,0 +1,26 @@
+.tstransactionlist-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.tstransactionlistitem-date-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 14px;
+    color: #888;
+}
+.tstransactionlistitem-container{
+    display: flex;
+    gap: 15px;
+}
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.tstransactionlistitem-tail {
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
+    align-items: end;
+}

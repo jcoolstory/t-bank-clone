@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import "./home.css";
 import { ListItem, ListView } from "./listview";
 import { ActionItemData, ListItemProps } from "./types";
+import { Card } from "../common";
 const mock : ActionItemData[]= [
   {
     icon: "sdf",
@@ -77,9 +78,6 @@ const mock4: ActionItemData[] = [
   },
 ];
 
-const Card = (props: { children: React.ReactNode }) => {
-  return <div className="tscard-container">{props.children}</div>;
-};
 
 const Divider = () => <div className="tscard-divider" />;
 const Home = () => {

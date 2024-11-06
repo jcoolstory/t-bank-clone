@@ -1,0 +1,61 @@
+import React, { PropsWithChildren, useCallback, useMemo } from "react";
+import { createContext, useContext, ReactNode, useState } from "react";
+import "./tab.css"
+type TabContextType = {
+  selectIndex: number;
+  setTab: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const initalValue = {
+  selectIndex: 0,
+  setTab: () => {},
+};
+
+const TabContext = createContext<TabContextType>(initalValue);
+
+export function Tab({defaultValue = 0, ...props}: { defaultValue? : number,  children: ReactNode }) {
+  const [selectIndex, setTab] = useState(defaultValue);
+  const providerValue = { selectIndex, setTab };
+  return (
+    <TabContext.Provider value={providerValue}>
+      {props.children}
+    </TabContext.Provider>
+  );
+}
+type TabHeaderProps = {
+  tabIndex: number;
+  children: React.ReactNode;
+};
+
+export function TabHeaderItem(props: TabHeaderProps) {
+  const { selectIndex, setTab } = useContext(TabContext);
+
+  const handleClick = useCallback(() => {
+    setTab(props.tabIndex);
+  }, [props.tabIndex])
+
+  const className = `tstab-head-item ${ selectIndex===props.tabIndex ? "active" : "deactive"}`;
+
+  return <div className={className} onClick={handleClick}>
+    <div>{props.children}</div>
+  {/* <div className={ `${ selectIndex===props.tabIndex ? "active" : "deactive"}`}/> */}
+  </div>;
+}
+
+type TabContentProps = {
+  tabIndex: number;
+  children: React.ReactNode;
+};
+
+export function TabHeader(props:{children : React.ReactNode} ) {
+  return <div className="tstab-head-container">{props.children}</div>
+}
+export function TabContent(props: TabContentProps) {
+  const { selectIndex } = useContext(TabContext);
+  if (selectIndex !== props.tabIndex) return null;
+  return <div className="tstab-content">{props.children}</div>;
+}
+
+Tab.Header = TabHeader
+Tab.HeaderItem = TabHeaderItem
+Tab.Content = TabContent

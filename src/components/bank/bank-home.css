@@ -1,0 +1,50 @@
+.bank-home-container {
+    background-color: #f3f4f6;
+    height: 100%;
+}
+
+.bank-home-layout {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap:20px
+}
+
+
+.bank-home-layout-wf {
+    display: flex;
+    flex-direction: column;
+    gap:20px
+}
+
+.bank-home-card-title {
+    margin-bottom: 20px;
+}
+
+
+.tsbank-home-tab {
+    position: sticky;
+    top : 0;
+}
+
+.ts-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.ts-grow {
+    flex-grow:1
+}
+
+.tsaccount-summary {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background: white;
+    gap: 20px;
+    padding-bottom: 10px;
+}
+
+.ts-account-sm {
+}

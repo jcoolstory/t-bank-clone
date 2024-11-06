@@ -1,4 +1,5 @@
 import type { MouseEvent } from "react";
+import { ActionItemData } from "../home/types";
 export type ListViewProps = {
   items: ListItemProps[];
 };
@@ -9,12 +10,3 @@ export type ListItemProps = {
   onClickButton?: (event: MouseEvent<HTMLElement>) => void;
 } & ActionItemData
 
-export type ActionItemData = {
-  icon?: string;
-  title: string | number;
-  subtitle?: string;
-  tail?: React.ReactNode | string | undefined; 
-  type?: "text" | "link" | "button" | "none";
-  action?: string;
-  tailAction?: string
-}

@@ -1,0 +1,33 @@
+.tstab-head-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex: 1;
+    border-bottom: 1px solid #aaa;
+}
+
+.tstab-head-item {
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    /* justify-items: center; */
+    justify-self: center;
+    align-items: center;
+    flex: 1;
+    justify-items: center;
+    background-color: white;;
+    min-height: 50px;
+}
+
+.tstab-head-item.active {
+    border-bottom: 2px solid black;
+    width: 100%;
+    /* display: list-item; */
+}
+
+.tstab-head-container.deactive {
+    border-bottom: 2px solid white;
+    width: 100%;
+    /* display: list-item; */
+}

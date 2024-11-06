@@ -1,0 +1,27 @@
+.tscard-container {
+    border-radius: 20px;
+    background: white;
+    padding: 18px 20px;
+    gap: 5px;
+}
+
+
+.tsbox-container {
+    background: white;
+    gap: 5px;
+}
+
+.cn {
+    padding: 18px 20px;
+}
+
+.thin {
+
+    padding: 10px 0;
+}
+
+.ts-space-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

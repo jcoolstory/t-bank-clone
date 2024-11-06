@@ -58,6 +58,14 @@
   color: #888;
 }
 
+.t-blues {
+  color: #2e7bea;
+}
+
+.t-under {
+  text-decoration: underline;
+}
+
 .t-disalbed {
   color: #888 !important;
 }
@@ -68,7 +76,7 @@
 
 .divider {
   height: 20px;
-  background: #eee;
+  background: #f3f4f6;
   left: 0;
   width: 100vw;
   position: absolute;
