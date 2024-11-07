@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Box, SpaceRow } from "../common";
 import { ActionItemData } from "../home/types";
 import { ShortListView } from "./bank-home";
@@ -53,7 +54,9 @@ const AccountSummary = () => {
     <Box>
       <div className="tsaccount-summary">
         <div>
-          <div className="t-s1 t-gray t-under ts-account-sm">토스뱅크 123123</div>
+          <div className="t-s1 t-gray t-under ts-account-sm">
+            토스뱅크 123123
+          </div>
           <SpaceRow>
             <div className="t-h1">632344원</div>
             <div className="tscard-sm-button t-s1">카드</div>
@@ -70,7 +73,14 @@ const AccountSummary = () => {
 };
 
 export function Tab1() {
-    return (
+  const dummy = useMemo(() => {
+    const dummy = Array.from({ length: 10 })
+      .map((_) => transactionMock)
+      .flat();
+    return dummy;
+  }, []);
+
+  return (
     <div className="bank-home-layout-wf">
       <AccountSummary />
       <Box>
@@ -80,10 +90,8 @@ export function Tab1() {
             <span>검색</span>
           </SpaceRow>
         </div>
-        <TransactionView items={transactionMock}></TransactionView>
+        <TransactionView items={dummy}></TransactionView>
       </Box>
     </div>
   );
-};
-
-
+}
