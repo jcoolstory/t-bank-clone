@@ -1,8 +1,7 @@
-import { memo, MouseEvent, useEffect, useMemo, useState } from "react";
-import { mockAction } from "../home";
-import "./transaction-list.css";
-import { SpaceRow } from "../common";
+import { memo, MouseEvent, useEffect, useState } from "react";
 import { currencyFormat } from "../../util/format";
+import { SpaceRow } from "../common";
+import "./transaction-list.css";
 export type TransactionData = {
   date: string;
   icon?: string;
@@ -47,12 +46,10 @@ function dateGrouping(
   return value;
 }
 
-const defaultTrancation: TransactionListGroupProps[] = [];
-
 export const TransactionView = (props: { items: TransactionData[] }) => {
   const [origin, setOrigin] = useState<TransactionListGroupProps[]>([]);
   useEffect(() => {
-    const newValue = dateGrouping(origin, props.items);
+    const newValue = dateGrouping([], props.items);
     setOrigin(newValue);
   }, [props.items]);
 

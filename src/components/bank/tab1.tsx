@@ -1,8 +1,7 @@
-import { HTMLAttributes } from "react";
 import { Box, SpaceRow } from "../common";
-import { TransactionList, TransactionView } from "./transaction-list";
-import { ShortListView } from "./bank-home";
 import { ActionItemData } from "../home/types";
+import { ShortListView } from "./bank-home";
+import { TransactionView } from "./transaction-list";
 
 const transactionMock = [
   {
@@ -70,8 +69,8 @@ const AccountSummary = () => {
   );
 };
 
-export const Tab1 = () => {
-  return (
+export function Tab1() {
+    return (
     <div className="bank-home-layout-wf">
       <AccountSummary />
       <Box>
@@ -86,3 +85,5 @@ export const Tab1 = () => {
     </div>
   );
 };
+
+

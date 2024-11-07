@@ -1,6 +1,5 @@
-import React, { PropsWithChildren, useCallback, useMemo } from "react";
-import { createContext, useContext, ReactNode, useState } from "react";
-import "./tab.css"
+import React, { createContext, ReactNode, useCallback, useContext, useState } from "react";
+import "./tab.css";
 type TabContextType = {
   selectIndex: number;
   setTab: React.Dispatch<React.SetStateAction<number>>;
@@ -29,10 +28,9 @@ type TabHeaderProps = {
 
 export function TabHeaderItem(props: TabHeaderProps) {
   const { selectIndex, setTab } = useContext(TabContext);
-
   const handleClick = useCallback(() => {
     setTab(props.tabIndex);
-  }, [props.tabIndex])
+  }, [props.tabIndex, setTab])
 
   const className = `tstab-head-item ${ selectIndex===props.tabIndex ? "active" : "deactive"}`;
 

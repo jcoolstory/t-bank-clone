@@ -1,12 +1,12 @@
-import { Box, Card } from "../common";
-import { Tab, TabHeader } from "./tab";
-import "./bank-home.css";
-import { ListItemTail, ListView } from "../home/listview";
-import { ActionItemData, ListItemProps, ListViewProps } from "../home/types";
 import { memo } from "react";
+import { Card } from "../common";
+import { ListItemTail } from "../home/listview";
+import { ActionItemData, ListItemProps, ListViewProps } from "../home/types";
+import "./bank-home.css";
 import { SlideListView } from "./slidelist-view";
-import { Tab3 } from "./tab3";
+import { Tab } from "./tab";
 import { Tab1 } from "./tab1";
+import { Tab3 } from "./tab3";
 
 const mock: ActionItemData[] = [
   {
