@@ -5,7 +5,7 @@ import { ListItemProps, ListViewProps } from "./slidelist-view.types";
 import { ShortListView } from "./bank-home";
 import { ActionItemData } from "../home/types";
 import { ListView } from "../home/listview";
-import { MultiPromiseExample } from "./multiPromise";
+import { getData, MultiPromiseExample } from "./multiPromise";
 
 const mock2: ActionItemData[] = [
   {
