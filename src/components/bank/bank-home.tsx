@@ -73,7 +73,7 @@ const slidemock3: ActionItemData[] = [
 export const BankHome = () => {
   return (
     <div className="bank-home-container">
-      <Tab defaultValue={1}>
+      <Tab defaultValue={2}>
         <div className="tsbank-home-tab">
           <Tab.Header>
             <Tab.HeaderItem tabIndex={0}>통장</Tab.HeaderItem>

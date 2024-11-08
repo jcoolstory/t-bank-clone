@@ -1,10 +1,11 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { Box } from "../common";
 import { mockAction } from "../home";
 import { ListItemProps, ListViewProps } from "./slidelist-view.types";
 import { ShortListView } from "./bank-home";
 import { ActionItemData } from "../home/types";
 import { ListView } from "../home/listview";
+import { MultiPromiseExample } from "./multiPromise";
 
 const mock2: ActionItemData[] = [
   {
@@ -43,6 +44,16 @@ const shortmock3: ActionItemData[] = [
 ];
 
 export const Tab3 = () => {
+  const [data, setData] = useState([]);
+  const dataFetch = async () => {
+    const res = await getData();
+    setData(res);
+  };
+
+  useEffect(() => {
+    dataFetch();
+  }, []);
+
   return (
     <div className="bank-home-layout-wf">
       <Box>
@@ -77,6 +88,7 @@ export const Tab3 = () => {
           </Box>
         </div>
       </Box>
+      <MultiPromiseExample/>
     </div>
   );
 };
@@ -95,7 +107,9 @@ const ShortLink = memo((props: ListItemProps) => {
   return (
     <div className="tslistitem-container">
       {props.icon && (
-        <div className="tssortlistitem-text-head t-t2 t-blues">{props.icon}</div>
+        <div className="tssortlistitem-text-head t-t2 t-blues">
+          {props.icon}
+        </div>
       )}
       <div className="">
         <div className="t-s1 t-gray">{props.subtitle}</div>
