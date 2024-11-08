@@ -1,23 +1,13 @@
-import { memo, useMemo } from "react";
-import "./asset.css";
-import { AssetItemTypes, RatioItems } from "../type";
+import { memo } from "react";
 import { currencyFormat } from "../../util/format";
 import { BarColors } from "../bar/bar.types";
+import { RatioItems } from "../type";
+import "./asset.css";
 
-export const useItem = (items: Array<AssetItemTypes>) => {
-  const values = useMemo(() => {
-    const total = items.reduce((prev, cur) => {
-      return prev + cur.value;
-    }, 0);
-
-    return items.map((item, i) => ({
-      id: i,
-      ...item,
-      ratio: (item.value / total) * 100,
-    }));
-  }, [items]);
-  return values;
+export type TSAssetProps = {
+  items: Array<RatioItems>;
 };
+
 
 export const Asset = memo(({ items }: TSAssetProps) => {
 
@@ -50,8 +40,21 @@ export const AssetItem = ({ item }: { item: RatioItems }) => {
   );
 };
 
-export type TSAssetProps = {
-  items: Array<RatioItems>;
-};
+// const createRatio = (items: Array<AssetItemTypes>) => {
+//   const total = items.reduce((prev, cur) => {
+//     return prev + cur.value;
+//   }, 0);
+  
+//   return items.map((item, id) => ({
+//     id,
+//     ...item,
+//     ratio: (item.value / total) * 100,
+//   }));
+// }
 
-export default {};
+// export const useItem = (items: Array<AssetItemTypes>) => {
+//   const values = useMemo(() => {
+//     createRatio(items)
+//   }, [items]);
+//   return values;
+// };

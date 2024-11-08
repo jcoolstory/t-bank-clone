@@ -18,3 +18,5 @@ export const SpaceRow = ({children}: HTMLAttributes<HTMLDivElement>) => {
       </div>
   )
 }
+
+export const Divider = () => <div className="tscard-divider" />;

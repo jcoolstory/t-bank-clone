@@ -1,23 +1,31 @@
-import { memo, useId, useMemo } from "react";
-import "./history.css";
-import { BarColors, RatioItemType, TSHistoryProps } from "./history.types";
-import { useItem } from "./history.hooks";
+import { memo } from "react";
 import { currencyFormat } from "../../util/format";
+import "./history.css";
+import { useItem } from "./history.hooks";
+import { BarColors, RatioItemType, TSHistoryProps } from "./history.types";
 
 const TSHistory = memo(({ items }: TSHistoryProps) => {
   const values = useItem(items);
 
   return (
     <div className="tshistory-header">
-    <Summary asset={values[values.length-1]}/>
-      <div className="tshistory-container" >
+      <Summary asset={values[values.length - 1]} />
+      <div className="tshistory-container">
         {values.map((item, i) => (
-          <TSHistoryBarItem key={i} {...item} isLast={i === values.length - 1} />
+          <TSHistoryBarItem
+            key={i}
+            {...item}
+            isLast={i === values.length - 1}
+          />
         ))}
       </div>
       <div className="tshistory-axis-container t-s1">
         {values.map((item, i) => (
-          <TSHistoryAxisItem key={i} {...item} isLast={i === values.length - 1} />
+          <TSHistoryAxisItem
+            key={i}
+            {...item}
+            isLast={i === values.length - 1}
+          />
         ))}
       </div>
       <div className="t-s1">만원 단위</div>
@@ -28,11 +36,10 @@ const TSHistory = memo(({ items }: TSHistoryProps) => {
 const TSHistoryBarItem = memo(
   ({
     ratio,
-    title,
-    id,
     value,
     isLast,
   }: { isLast: boolean } & RatioItemType) => {
+
     return (
       <div className="tshistory-yaxis-container">
         <div
@@ -57,7 +64,7 @@ const TSHistoryBarItem = memo(
 );
 
 const TSHistoryAxisItem = memo(
-  ({ ratio, title, id, isLast }: { isLast: boolean } & RatioItemType) => {
+  ({ title, isLast }: { isLast: boolean } & RatioItemType) => {
     return (
       <div
         className="tshistory-item"
@@ -72,17 +79,17 @@ const TSHistoryAxisItem = memo(
   }
 );
 
-export default TSHistory;
-
 export const Summary = ({ asset }: { asset: RatioItemType }) => {
   return (
     <div className="summary-container">
       <div className="t-h1 bold" style={{ marginBottom: "5px" }}>
         총자산이 지난달보다 <br />
-        { currencyFormat(Math.abs(asset.diff))}
+        {currencyFormat(Math.abs(asset.diff))}
         {asset.diff < 0 ? "만원 줄었어요" : "만원 늘었어요"}
       </div>
       <div className="t-gray bold">그래프가 안맞다면</div>
     </div>
   );
 };
+
+export default TSHistory;

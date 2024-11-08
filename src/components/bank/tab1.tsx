@@ -79,7 +79,7 @@ export function Tab1() {
       .flat();
     return dummy;
   }, []);
-
+  console.log("Tab1")
   return (
     <div className="bank-home-layout-wf">
       <AccountSummary />

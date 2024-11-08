@@ -1,4 +1,4 @@
-import { AssetItemTypes, RatioItems } from "../type";
+import { RatioItems } from "../type";
 
 export type TSBarProps = {
     items: Array<RatioItems>;
@@ -13,5 +13,3 @@ export const BarColors = [
     "#006A67",
     "#FFF4B7"
 ]
-
-export default {}

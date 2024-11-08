@@ -1,10 +1,10 @@
-import { memo, useMemo } from "react";
+import { memo, useMemo, useRef } from "react";
 import "./myasset.css";
 import { AssetItemTypes, MyAssetType } from "../type";
 import { currencyFormat } from "../../util/format";
 
 import { Asset } from "../asset";
-import Bar from "../bar/bar";
+import Bar, { RefT, TSBarRef } from "../bar/bar";
 import TSHistory from "../history/history";
 
 const mock = [
@@ -78,6 +78,7 @@ export const useItem = (items: Array<AssetItemTypes>) => {
     }));
     return { total, assets };
   }, [items]);
+  
   return values;
 };
 
@@ -93,14 +94,21 @@ export const Summary = ({ asset }: { asset: MyAssetType }) => {
 
 export const MyAsset = memo(() => {
   const asset = useItem(mock);
+  const barRef = useRef<RefT|null>(null);
+  const handleClick = () => {
+    console.log(barRef)
+    barRef.current?.showStart();
+  }
+
   return (
     <>
       <div>
         <Summary asset={asset}/>
-        <Bar items={asset.assets} />
+        <TSBarRef ref={barRef} items={asset.assets} />
         <Asset items={asset.assets} />
         <div className="divider"  />
         <TSHistory items={historyMock} />
+        <div onClick={handleClick}>test</div>
       </div>
     </>
   );

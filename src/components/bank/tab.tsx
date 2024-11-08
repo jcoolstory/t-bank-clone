@@ -41,6 +41,7 @@ type TabHeaderProps = {
 
 export function TabHeaderItem(props: TabHeaderProps) {
   const { selectIndex, setTab } = useContext(TabContext);
+
   const handleClick = useCallback(() => {
     setTab(props.tabIndex);
   }, [props.tabIndex, setTab]);
@@ -64,6 +65,7 @@ type TabContentProps = {
 export function TabHeader(props: { children: React.ReactNode }) {
   return <div className="tstab-head-container">{props.children}</div>;
 }
+
 export function TabContent(props: TabContentProps) {
   const ref = useRef<Boolean>(false);
   const { selectIndex } = useContext(TabContext);

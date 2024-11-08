@@ -1,9 +1,8 @@
 import { memo } from "react";
-
-import { mockAction } from "../home";
 import { ListItemProps, ListViewProps } from "./slidelist-view.types";
 import "./slidelist-view.css"
 import { ListItemTail } from "../home/listview";
+import { mockAction } from "../../util/mock";
 
 export const SlideListView = (props: ListViewProps) => {
   return (

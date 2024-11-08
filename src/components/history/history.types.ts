@@ -1,4 +1,4 @@
-import { AssetItemTypes, MonthValueType, MyAssetType, RatioItems } from "../type";
+import { MonthValueType } from "../type";
 
 export type RatioItemType = {
     id: number
@@ -18,5 +18,3 @@ export const BarColors = [
     "#88f",
     "#888"
 ]
-
-export default {}

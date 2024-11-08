@@ -1,11 +1,10 @@
 import { memo, useEffect, useState } from "react";
 import { Box } from "../common";
-import { mockAction } from "../home";
-import { ListItemProps, ListViewProps } from "./slidelist-view.types";
-import { ShortListView } from "./bank-home";
-import { ActionItemData } from "../home/types";
 import { ListView } from "../home/listview";
+import { ActionItemData } from "../home/types";
 import { getData, MultiPromiseExample } from "./multiPromise";
+import { ListItemProps, ListViewProps } from "./slidelist-view.types";
+import { mockAction } from "../../util/mock";
 
 const mock2: ActionItemData[] = [
   {
@@ -53,7 +52,7 @@ export const Tab3 = () => {
   useEffect(() => {
     dataFetch();
   }, []);
-
+  console.log("Tab3")
   return (
     <div className="bank-home-layout-wf">
       <Box>

@@ -21,8 +21,8 @@ export const MultiPromiseExample = () => {
   }, [])
   return (
     <>
-      {ress.map((r: string) => {
-        return <DummyC data={r}></DummyC>;
+      {ress.map((r: string, i: number) => {
+        return <DummyC data={r} key={i}></DummyC>;
       })}
     </>
   );

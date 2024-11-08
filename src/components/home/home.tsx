@@ -1,102 +1,70 @@
-import React, { memo } from "react";
+import { memo, useCallback, useState } from "react";
+import { mockAction } from "../../util/mock";
+import { Card, Divider } from "../common";
 import "./home.css";
-import { ListItem, ListView } from "./listview";
+import { ListItem, ListView, ListView2 } from "./listview";
+import { mock, mock2, mock3, mock4 } from "./mock";
 import { ActionItemData, ListItemProps } from "./types";
-import { Card } from "../common";
-const mock : ActionItemData[]= [
-  {
-    icon: "sdf",
-    title: 1233,
-    subtitle: "토스뱅크통장",
-    tail: "송금",
-  },
-  {
-    icon: "sdf",
-    title: 1233,
-    subtitle: "토스뱅크통장",
-    tail: "지금받기",
-  },
-  {
-    icon: "sdf",
-    title: 1233,
-    subtitle: "토스뱅크통장",
-    tail: "송금",
-  },
-  {
-    icon: "sdf",
-    title: 1233,
-    subtitle: "토스뱅크통장",
-    tail: "송금",
-  },
-  {
-    icon: "sdf",
-    title: 1233,
-    subtitle: "토스뱅크통장",
-    tail: "송금",
-  },
-  {
-    icon: "sdf",
-    title: 1233,
-    subtitle: "토스뱅크통장",
-    tail: "송금",
-  },
-];
 
-const mock2 : ActionItemData[] = [
-  {
-    icon: "sdf",
-    title: 1233,
-    subtitle: "11월 신용카드로 쓴돈",
-    tail: "새 내역",
-  },
-  {
-    icon: "sdf",
-    title: 1233,
-    subtitle: "토스뱅크통장",
-  },
-];
-
-const mock3: ActionItemData[] = [
-  {
-    icon: "sdf",
-    title: "내신용점수",
-    tail: "확인하기",
-    type: "link",
-  },
-];
-
-const mock4: ActionItemData[] = [
-  {
-    icon: "1",
-    title: "버튼누르고 10원 받기",
-    type: "link",
-  },
-  {
-    icon: "sdf",
-    title: "내보홈료정산하기",
-    type: "link",
-  },
-];
-
-
-const Divider = () => <div className="tscard-divider" />;
 const Home = () => {
+  console.log("Home")
+  const [toggle, setToggle] = useState(false);
+  const [mockData1, setMockData1] = useState(mock);
+  const [mockData2, setMockData2] = useState(mock2);
+  const [mockData3, setMockData3] = useState(mock3);
+  const handleClick1 = useCallback((event: React.MouseEvent<HTMLElement, MouseEvent>, target:ActionItemData ): void => {
+    console.log("hanldeClick1", target)
+    setMockData1( (prev:ActionItemData[] ) => {
+      return prev.map( (item) => {
+        if (item.id === target.id) {
+          if (item.tail !== "on") {
+            item.tail = "on"
+          } else {
+            item.tail = "off"
+          }
+          return { ...item}
+        } 
+        return item
+      })
+      // return [...prev]
+    })
+  },[])
+
+  const handleClick2 = (event: React.MouseEvent<HTMLElement, MouseEvent>, target:ActionItemData ): void => {
+    console.log("hanldeClick1", target)
+    setMockData1( (prev:ActionItemData[] ) => {
+      return prev.map( (item) => {
+        if (item.id === target.id) {
+          if (item.tailAction !== "on") {
+            item.tailAction = "on"
+          } else {
+            item.tailAction = "off"
+          }
+          return { ...item}
+        } 
+        return item
+      })
+    })
+  }
+  const handleToggle = () => {
+    setToggle(prev=>!prev)
+  }
   return (
     <div className="home-container">
-      <div className="home-layout">
+      <div className="home-layout" onClick={handleToggle}>
         <Card>
-        <ListItem title={"토스뱅크"} type="link" ></ListItem>
+          <ListItem title={"토스뱅크"} type="link" ></ListItem>
         </Card>
         <Card>
-          <ListView items={mock}></ListView>
+          <ListView items={mockData1} onClick={handleClick1} ></ListView>
           <Divider />
           <div className="tscard-row">내계좌 대출 증권 포인트보기</div>
         </Card>
         <Card>
-          <ListView items={mock2}></ListView>
+          <ListView items={mockData2}></ListView> ""
         </Card>
         <Card>
-          <ListView items={mock3}></ListView>
+          <ListView items={mockData3}></ListView>
 
           <Divider />
           <div className="tscard-row">
@@ -128,7 +96,7 @@ const Home = () => {
               </div>
             </div>
 
-            <ListView items={mock4}></ListView>
+            {/* <ListView items={mock4}></ListView> */}
           </div>
         </Card>
         <Card>
@@ -147,13 +115,10 @@ const ShortLink = memo((props: ListItemProps) => {
         <div className="t-t1">{props.title}</div>
       </div>
       <div className="tslistitem-tail">
-        <button className="tslistitem-button btn-primary" onClick={props.onClick}>{props.tail}</button>
+        <button className="tslistitem-button btn-primary" onClick={(e)=> { props.onClick?.(e, props)}}>{props.tail}</button>
       </div>
     </div>
   );
 });
 
-export const mockAction = (message: string) => {
-    return alert(message);
-}
 export default Home;
